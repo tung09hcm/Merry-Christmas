@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giáng Sinh An Lành - Nguyễn Trung Sơn</title>
+    <style>
+        /* --- 1. FONTS & RESET --- */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+        :root {
+            --bg-color: #111111; /* Màu nền đen xám giống ảnh */
+            --text-color: #e0e0e0;
+            --text-muted: #888888;
+            --accent-color: #ffffff;
+            --container-width: 740px; /* Độ rộng vùng đọc bài viết */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif; /* Font nội dung hiện đại */
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* --- 2. HERO IMAGE SECTION (Giống ảnh 2) --- */
+        .hero-banner {
+            width: 100%;
+            height: 60vh; /* Chiều cao ảnh bìa */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ảnh Giáng sinh tone trầm */
+            filter: brightness(0.8); 
+        }
+
+        /* Nút Back giả lập giống ảnh */
+        .nav-back {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- 3. HEADER ARTICLE (Tiêu đề & Tác giả) --- */
+        .article-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .meta-date {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif; /* Font giống ảnh "Cẩm tú cầu" */
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        /* Author Block (Giống ảnh 3) */
+        .author-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #333;
+        }
+
+        .author-info {
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #fff;
+            display: block;
+        }
+
+        .author-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- 4. CONTENT AREA --- */
+        .content-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            color: #cccccc;
+        }
+
+        /* Dropcap chữ cái đầu */
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 12px;
+            color: #fff;
+        }
+
+        /* Ảnh trong bài */
+        .content-img {
+            width: 100%;
+            border-radius: 4px;
+            margin: 30px 0 10px;
+        }
+        
+        figcaption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        /* --- 5. QUOTE BOX STYLE (Giống ảnh 1) --- */
+        .quote-box {
+            border: 1px dashed #444; /* Viền nét đứt */
+            border-radius: 12px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #fff;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-color);
+            padding: 0 10px;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* --- 6. TABLE & LIST --- */
+        ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            border-left: 1px solid #333;
+        }
+        ul li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        ul li strong { color: #fff; }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+        .info-table th {
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: normal;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            width: 30%;
+        }
+        .info-table td {
+            color: #fff;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            font-weight: 500;
+        }
+
+        /* --- 7. FOOTER AUTHOR (Giống ảnh 1) --- */
+        .footer-author {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Video wrapper */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* Animation Fade Up */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero-banner { height: 40vh; }
+            .quote-text { font-size: 1.1rem; }
+        }
+
+        /* --- IMAGE SLIDER --- */
+        .image-slider {
+            position: relative;
+            width: 100%;
+            max-width: 740px;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .slider-images {
+            position: relative;
+            width: 100%;
+            height: 430px;
+        }
+
+        .slider-images img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            filter: brightness(0.85);
+        }
+
+        .slider-images img.active {
+            opacity: 1;
+        }
+
+        /* Arrows */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 1.4rem;
+            user-select: none;
+            transition: 0.2s;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(255,255,255,0.22);
+        }
+
+        .arrow-left {
+            left: 15px;
+        }
+        .arrow-right {
+            right: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://timbu.me/sounds/lofi-christmas.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="hero-banner">
+        <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&q=80&w=2000" alt="Christmas Mood">
+    </header>
+
+    <div class="article-header fade-in">
+        <span class="meta-date">December 5, 2025</span>
+        <h1>Giáng Sinh: Mùa Của Phép Màu & Sự Bình Yên</h1>
+        
+        <div class="author-block">
+            <img src="https://i.ibb.co/r2bzGcx3/IMG-1710597143766-1710597926899.jpg" alt="Avatar" class="author-avatar">
+            <div class="author-info">
+                <span class="author-name">Nguyễn Trung Sơn</span>
+                <span class="author-role">Author & Reviewer</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="content-container">
+
+        <p class="drop-cap fade-in">
+            Giáng Sinh (Noel) không chỉ là một ngày lễ, mà là một cảm xúc. Khi những cơn gió lạnh đầu đông ùa về, cũng là lúc ánh đèn vàng ấm áp thắp sáng mọi nẻo đường. Bài viết này là góc nhìn nhỏ của tôi về mùa lễ đẹp nhất trong năm.
+        </p>
+
+        <div class="fade-in">
+            <h2>Ý Nghĩa Của Mùa Lễ Hội</h2>
+            <p>
+                Khác với sự ồn ào của những lễ hội khác, Giáng Sinh mang đến sự tĩnh lặng cần thiết để chúng ta nhìn lại một năm đã qua. Là dịp để sum họp gia đình, và quan trọng hơn cả, là dịp để trao đi những yêu thương mà ngày thường ta vô tình quên lãng.
+                <br>
+                <a href="https://vi.wikipedia.org/wiki/L%E1%BB%85_Gi%C3%A1ng_Sinh" target="_blank" style="color: #fff; border-bottom: 1px solid #fff; font-size: 0.9rem;">Tìm hiểu thêm trên Wikipedia &rarr;</a>
+            </p>
+        </div>
+
+        <div class="quote-box fade-in">
+            <div class="quote-icon">“</div>
+            <p class="quote-text">
+                Vẻ đẹp của Giáng Sinh không chỉ nằm ở những gói quà lấp lánh, mà còn ở hơi ấm của sự đoàn tụ và niềm hy vọng vào một năm mới an lành.
+            </p>
+        </div>
+
+        <div class="fade-in">
+            <div class="image-slider fade-in">
+                <div class="slider-images">
+                    <img src="https://images.pexels.com/photos/3149896/pexels-photo-3149896.jpeg" class="active">
+                    <img src="https://images.pexels.com/photos/246351/pexels-photo-246351.jpeg">
+                    <img src="https://images.pexels.com/photos/1692861/pexels-photo-1692861.jpeg">
+                    <img src="https://images.pexels.com/photos/759948/pexels-photo-759948.jpeg">
+                </div>
+
+                <div class="slider-arrow arrow-left">&#10094;</div>
+                <div class="slider-arrow arrow-right">&#10095;</div>
+            </div>
+
+            <ul>
+                <li><strong>Cây thông Noel:</strong> Biểu tượng của sức sống vĩnh cửu.</li>
+                <li><strong>Thiệp viết tay:</strong> Những lời chúc chân thành gửi đến người thân.</li>
+                <li><strong>Nhạc Jazz/Lofi:</strong> Giai điệu nhẹ nhàng sưởi ấm tâm hồn.</li>
+            </ul>
+        </div>
+
+        <div class="fade-in">
+            <h2>Góc Điện Ảnh</h2>
+            <p>Một chút hương vị Giáng sinh qua những thước phim kinh điển.</p>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/jEDaVHmw7r4?si=christmas_vibe" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="fade-in">
+            <h2>Thông Tin Sự Kiện</h2>
+            <table class="info-table">
+                <tr>
+                    <th>Sự kiện</th>
+                    <td>Lễ Giáng Sinh (Christmas)</td>
+                </tr>
+                <tr>
+                    <th>Thời gian</th>
+                    <td>24 - 25 Tháng 12</td>
+                </tr>
+                <tr>
+                    <th>Màu sắc</th>
+                    <td>Đỏ, Xanh Lục, Vàng</td>
+                </tr>
+                <tr>
+                    <th>Hoạt động</th>
+                    <td>Tặng quà, Tiệc tối, Cầu nguyện</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="fade-in">
+            <h2>Lời Kết</h2>
+            <p>
+                Hy vọng bài viết nhỏ này mang lại cho bạn một chút cảm giác ấm áp. Chúc bạn một mùa Giáng Sinh an lành và hạnh phúc bên những người thân yêu!
+            </p>
+
+            <div class="footer-author">
+                <img src="https://i.ibb.co/r2bzGcx3/IMG-1710597143766-1710597926899.jpg" alt="Avatar" class="footer-avatar">
+                <div class="author-info">
+                    <span class="author-name">Nguyễn Trung Sơn</span>
+                    <span class="author-role">Author & Reviewer</span>
+                    <div style="margin-top: 5px;">
+                        <span style="font-size: 0.75rem; background: #333; padding: 2px 8px; border-radius: 10px; color: #fff;">Flowers</span>
+                        <span style="font-size: 0.75rem; background: #333; padding: 2px 8px; border-radius: 10px; color: #fff;">Lifestyle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+
+        /* --- Image Slider Script --- */
+        const slider = document.querySelector('.image-slider');
+        const images = slider.querySelectorAll('img');
+        const arrowLeft = slider.querySelector('.arrow-left');
+        const arrowRight = slider.querySelector('.arrow-right');
+
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) img.classList.add('active');
+            });
+        }
+
+        arrowRight.onclick = () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        };
+
+        arrowLeft.onclick = () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        };
+
+        // Optional: auto slide
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }, 6000);
+
+
+        // 1. Script tự động phát nhạc khi tương tác (giữ nguyên logic cũ)
+        const audio = document.getElementById("bg-music");
+        audio.volume = 0.5;
+
+        function unlockAudio() {
+            if (audio.paused) {
+                audio.play().catch(e => console.log("Audio play error:", e));
+            }
+            ['click', 'scroll', 'touchstart'].forEach(evt => 
+                document.removeEventListener(evt, unlockAudio)
+            );
+        }
+
+        ['click', 'scroll', 'touchstart'].forEach(evt => 
+            document.addEventListener(evt, unlockAudio)
+        );
+        
+        // Thử chạy ngay khi load (nếu trình duyệt cho phép)
+        window.onload = () => {
+            audio.play().catch(() => console.log("Autoplay blocked, waiting for interaction"));
+        };
+
+        // 2. Animation Scroll (Hiện dần nội dung)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+    <div style="position: fixed; bottom: 0; left: 0; width: 1px; height: 1px; opacity: 0.01; overflow: hidden; pointer-events: none; z-index: -1;">
+    <iframe 
+        width="560" height="315" 
+        src="https://www.youtube.com/embed/wgwcBTrY9og?autoplay=1&loop=1&playlist=wgwcBTrY9og&controls=0&mute=0" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+</body>
+</html>
